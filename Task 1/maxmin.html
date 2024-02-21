@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>max and min value from 2d array</title>
+</head>
+<body>
+    
+
+    <script>
+        const myArray = [
+            [3, 2, 5],
+            [1, 4, 78],
+            [9, 1, 0],
+            [0, 2, -6]
+        ];
+
+        let maxVal = myArray[0][0];
+        let minVal = myArray[0][0];
+
+        for (let i = 0; i < myArray.length; i++) {
+            for (let j = 0; j < myArray[i].length; j++) {
+                const num = myArray[i][j];
+                maxVal = Math.max(maxVal, num);
+                minVal = Math.min(minVal, num);
+            }
+        }
+
+        console.log(`Maximum value: ${maxVal}`);
+        console.log(`Minimum value: ${minVal}`);
+
+    </script>
+</body>
+</html>
