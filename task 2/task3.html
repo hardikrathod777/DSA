@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            insertAtPosition(position, data) {
+    if (position < 1) {
+        console.log("Invalid position!");
+        return;
+    }
+
+    let current = this.head;
+    let count = 1;
+
+    // Special case for inserting at the head
+    if (position === 1) {
+        const newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
+        return;
+    }
+
+    while (current && count < position - 1) {
+        current = current.next;
+        count++;
+    }
+
+    if (!current) {
+        console.log("Position exceeds list length.");
+        return;
+    }
+
+    const newNode = new Node(data);
+    newNode.next = current.next;
+    current.next = newNode;
+}
+        }
+
+        const myList = new LinkedList();
+        myList.insertAtPosition(1, 10);
+        myList.insertAtPosition(2, 200);
+        myList.insertAtPosition(3, 3000);
+
+        console.log(myList);
+    </script>
+</body>
+</html>

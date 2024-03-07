@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        class Node {
+
+            constructor(val) {
+                this.head = {
+                    prev: null,
+                    value: val,
+                    next: null
+                };
+
+                this.tail = this.head;
+                this.size = 1;
+            }
+
+            addNode(newVal) {
+                this.size += 1;
+                let count = 1;
+                let h = this.head;
+
+                let newNode = {
+                    prev: null,
+                    value: newVal,
+                    next: null
+                }
+
+                // newNode.prev = this.head
+                while (count < this.size) { // 1 < 2 2<3 3<null
+
+                    // console.log("c",count ,h);
+                    newNode.prev = h
+                    h = h.next;
+                    count++;
+
+                }
+
+                this.tail.next = newNode;
+
+                this.tail = newNode;
+
+            }
+
+            printNode() {
+
+                let h = this.head; //h =this.tail for reverse 
+                for (let i = 1; i <= this.size; i++) {
+                    console.log(h.value);
+                    h = h.next; //h =h.prev
+                }
+
+            }
+
+            removeNode(index) {
+               
+                let test = this.head;
+                let h = this.head;
+
+                if(index == 1){
+                    test.next.prev = null;
+                    this.head = test.next;
+                }else{
+
+                    for (let i = 1; i < index - 1; i++) {
+                        test = test.next;
+                    }
+    
+                    console.log("test", test);
+                    test.next = test.next.next;
+    
+                    if (index != this.size) {
+    
+                        for (let i = 1; i < index; i++) {
+                            h = h.next;
+                        }
+    
+                        h.prev = test;
+    
+                        console.log("h", h);
+                    }
+                }
+                this.size--;
+            }
+
+        }
+
+        let list = new Node("List1");
+        list.addNode("List2");
+        list.addNode("List3");
+        list.addNode("List4");
+        // list.addNode("List5");
+        // list.addNode("List6");
+
+        // list.printNode();
+        list.removeNode(1);
+        // list.removeNode(3);
+
+        console.log(list);
+
+    </script>
+
+
+</body>
+
+</html>

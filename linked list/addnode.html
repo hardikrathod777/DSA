@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD node</title>
+</head>
+<body>
+    
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+            }
+
+            class LinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            addNode(data) {
+                const newNode = new Node(data);
+
+                if (this.head === null) {
+                this.head = newNode;
+                } else {
+                let current = this.head;
+
+                while (current.next !== null) {
+                    current = current.next;
+                }
+
+                current.next = newNode;
+                }
+            }
+        }
+
+        const linkedList = new LinkedList();
+        linkedList.addNode(1);
+        linkedList.addNode(2);
+        linkedList.addNode(3);
+
+        console.log(linkedList); // { head: { data: 1, next: { data: 2, next: { data: 3, next: null } } } }
+    </script>
+</body>
+</html>

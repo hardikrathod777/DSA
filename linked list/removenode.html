@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REMOVE node</title>
+</head>
+<body>
+    
+
+    <script>
+    class Node {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+      
+      class LinkedList {
+        constructor() {
+          this.head = null;
+        }
+      
+        append(data) {
+          const newNode = new Node(data);
+      
+          if (this.head === null) {
+            this.head = newNode;
+            return;
+          }
+      
+          let currentNode = this.head;
+          while (currentNode.next !== null) {
+            currentNode = currentNode.next;
+          }
+      
+          currentNode.next = newNode;
+        }
+      
+        remove(data) {
+          if (this.head === null) {
+            return;
+          }
+      
+          if (this.head.data === data) {
+            this.head = this.head.next;
+            return;
+          }
+      
+          let currentNode = this.head;
+          let previousNode = null;
+          while (currentNode !== null && currentNode.data !== data) {
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+          }
+      
+          if (currentNode === null) {
+            return;
+          }
+      
+          previousNode.next = currentNode.next;
+        }
+      
+        print() {
+          let currentNode = this.head;
+          while (currentNode !== null) {
+            console.log(currentNode.data);
+            currentNode = currentNode.next;
+          }
+        }
+      }
+      
+      const linkedList = new LinkedList();
+      
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.append(3);
+      linkedList.append(4);
+      
+      linkedList.remove(2);
+      
+      linkedList.print();
+      </script>
+</body>
+</html>

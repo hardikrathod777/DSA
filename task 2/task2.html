@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            class Node {
+                constructor(data) {
+                    this.data = data;
+                    this.prev = null;
+                    this.next = null;
+                }
+            }
+
+            class DoublyLinkedList {
+                constructor() {
+                    this.head = null;
+                }
+
+                addAtBeginning(data) {
+                    const newNode = new Node(data);
+                    newNode.next = this.head;
+                    if (this.head) {
+                        this.head.prev = newNode;
+                    }
+                    this.head = newNode;
+                }
+            }
+
+            const myList = new DoublyLinkedList();
+            myList.addAtBeginning(6);
+            myList.addAtBeginning(5);
+            myList.addAtBeginning(4);
+            myList.addAtBeginning(3);
+            myList.addAtBeginning(2);
+            myList.addAtBeginning(1);
+            myList.addAtBeginning(20);
+
+            console.log(myList);
+
+    </script>
+</body>
+</html>

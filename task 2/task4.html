@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubly Linked List</title>
+</head>
+<body>
+    <script>
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.prev = null;
+                this.next = null;
+            }
+        }
+
+        class DoublyLinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            insertAtPosition(position, data) {
+                if (position < 1) {
+                    console.log("Invalid position!");
+                    return;
+                }
+
+                const newNode = new Node(data);
+
+                if (!this.head) {
+                    if (position !== 1) {
+                        console.log("Position exceeds list length.");
+                        return;
+                    }
+                    this.head = newNode;
+                    return;
+                }
+
+                let current = this.head;
+                let count = 1;
+
+                while (current && count < position) {
+                    current = current.next;
+                    count++;
+                }
+
+                if (!current && count !== position) {
+                    console.log("Position exceeds list length.");
+                    return;
+                }
+
+                newNode.next = current;
+                newNode.prev = current ? current.prev : null;
+
+                if (current) {
+                    if (current.prev) {
+                        current.prev.next = newNode;
+                    }
+                    current.prev = newNode;
+                } else {
+                    let temp = this.head;
+                    while (temp.next) {
+                        temp = temp.next;
+                    }
+                    temp.next = newNode;
+                    newNode.prev = temp;
+                }
+            }
+
+        }
+
+        const myList = new DoublyLinkedList();
+        
+        myList.insertAtPosition(1, 10);
+        myList.insertAtPosition(2, 200);
+        myList.insertAtPosition(3, 3000);
+
+        console.log(myList);
+    </script>
+</body>
+</html>

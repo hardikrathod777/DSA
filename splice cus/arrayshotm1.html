@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var array = [10,32,68,6,58,2,45];
+
+        for(let i=0; i<array.length; i++){
+            let max_value= i;
+            for(let j=i+1; j<array.length; j++){
+                if(array[j]>array[max_value]){
+                    max_value= j;
+                }
+                
+
+            }
+            
+            let temp = array[i];
+            array[i]=array[max_value];
+            array[max_value]=temp;
+        }
+        console.log(array);
+    </script>
+</body>
+</html>

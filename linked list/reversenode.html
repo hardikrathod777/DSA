@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVERSE Node</title>
+</head>
+<body>
+    <script>
+        class Node {
+            constructor(value) {
+                this.value = value;
+                this.next = null;
+            }
+            }
+
+            class LinkedList {
+            constructor() {
+                this.head = null;
+            }
+
+            append(value) {
+                const newNode = new Node(value);
+                if (this.head === null) {
+                this.head = newNode;
+                return;
+                }
+
+                let currentNode = this.head;
+                while (currentNode.next !== null) {
+                currentNode = currentNode.next;
+                }
+
+                currentNode.next = newNode;
+            }
+
+            reverse() {
+                let previousNode = null;
+                let currentNode = this.head;
+                while (currentNode !== null) {
+                const nextNode = currentNode.next;
+                currentNode.next = previousNode;
+                previousNode = currentNode;
+                currentNode = nextNode;
+                }
+
+                this.head = previousNode;
+            }
+
+            print() {
+                let currentNode = this.head;
+                while (currentNode !== null) {
+                console.log(currentNode.value);
+                currentNode = currentNode.next;
+                }
+            }
+        }
+
+        const linkedList = new LinkedList();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        linkedList.append(4);
+        linkedList.append(5);
+        
+        linkedList.reverse();
+
+        console.log("Reversed linked list:");
+        linkedList.print();
+    </script>
+</body>
+</html>
